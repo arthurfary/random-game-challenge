@@ -7,11 +7,9 @@
   } from "../stores/steamStore.js";
 
   let steamId = "";
-  $: gameNames = "";
+
   function fetchChallenge(steamId) {
     fetchUserGames(steamId);
-
-    gameNames = $games.map((game) => game.name).join(", ");
   }
 </script>
 

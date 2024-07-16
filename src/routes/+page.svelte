@@ -1,10 +1,14 @@
 <script>
+  import GeneratedChallanges from "./generatedChallanges.svelte";
   import SteamInput from "./steamInput.svelte";
+  import { randomGame } from "../stores/steamStore";
 </script>
 
 <div class="main">
   <h1>Entendiado? Gere um desafio!</h1>
   <SteamInput />
+  {$randomGame}
+  <GeneratedChallanges />
 </div>
 
 <style>
