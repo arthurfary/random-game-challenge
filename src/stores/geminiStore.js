@@ -12,9 +12,9 @@ export const isLoading = writable(false)
 export async function generateGameChallanges(gameName) {
   isLoading.set(true)
 
-  const prompt = `Create 3 challanges ranging in difficulty from Easy to Difficult for a \
-    player in the game ${gameName}, the player will try to achieve those challanges by playing said \
-    game to the best of their hability, make sure they are all achievable and fun.`
+  const prompt = `Create 3 challenges ranging in difficulty from Easy to Difficult for a \
+    player in the game ${gameName}, the player will try to achieve those challenges by playing said \
+    game to the best of their ability, make sure they are all achievable and fun.`
 
   const result = await model.generateContent(prompt)
   const response = await result.response;

@@ -25,21 +25,23 @@
 <style>
   .steamInput {
     display: flex;
-    background-color: #eee;
+    background-color: #1b2838;
+    color: #c7d5e0;
     border-radius: 25px;
     align-items: center;
     flex-direction: column;
     padding: min(100px, 3%);
     max-width: 50%;
+    gap: 1em;
   }
 
   .input-container {
-    gap: 10%;
     flex-direction: column;
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
+    gap: 1em;
   }
 
   input {
@@ -47,5 +49,20 @@
     border-radius: 25px;
     border: 1px solid #ddd;
     text-align: center;
+  }
+
+  button {
+    background-color: #2a475e;
+    font-size: 1em;
+    border-radius: 99px;
+    border: 1px solid #c7d5e0;
+    color: #c7d5e0;
+
+    padding-block: 2%;
+    padding-inline: 5%;
+  }
+
+  button:hover {
+    cursor: pointer;
   }
 </style>
