@@ -35,7 +35,6 @@ export async function fetchUserGames(steamID) {
 }
 
 function pickRandomGame(slicedGames) {
-  console.log(slicedGames);
   if (slicedGames.length > 0) {
     const randomIndex = Math.floor(Math.random() * slicedGames.length);
     randomGame.set(slicedGames[randomIndex].name);
