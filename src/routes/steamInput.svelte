@@ -1,10 +1,5 @@
 <script>
-  import {
-    games,
-    loading,
-    error,
-    fetchUserGames,
-  } from "../stores/steamStore.js";
+  import { loading, error, fetchUserGames } from "../stores/steamStore.js";
 
   let steamId = "";
 
@@ -24,11 +19,6 @@
       <input type="text" bind:value={steamId} placeholder="Enter a steam id" />
       <button on:click={() => fetchChallenge(steamId)}>Get Challenge</button>
     </div>
-    <p>
-      {#each $games as game, i}
-        {game.name}{$games.length === i + 1 ? "." : ", "}
-      {/each}
-    </p>
   {/if}
 </div>
 

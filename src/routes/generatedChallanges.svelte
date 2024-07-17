@@ -1,10 +1,18 @@
 <script>
-  import { challenges, generateGameChallanges } from "../stores/geminiStore";
-
-  let gameName = "";
+  import { challenges, isLoading } from "../stores/geminiStore";
+  import { randomGame } from "../stores/steamStore";
 </script>
 
-<h1>Challenges:</h1>
-<p>
-  {$challenges}
-</p>
+{#if $randomGame !== ""}
+  <h1>
+    Your random game is {$randomGame}!
+  </h1>
+{/if}
+
+{#if $isLoading}
+  Generating challenges...
+{:else if $challenges !== ""}
+  <p>
+    {$challenges}
+  </p>
+{/if}
