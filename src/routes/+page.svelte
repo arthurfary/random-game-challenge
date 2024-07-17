@@ -1,35 +1,25 @@
 <script>
-  import {
-    games,
-    loading,
-    error,
-    fetchUserGames,
-  } from "../stores/steamStore.js";
-
-  let steamId = "";
-
-  function fetchChallenge(steamId) {
-    fetchUserGames(steamId);
-  }
+  import GeneratedChallanges from "./generatedChallanges.svelte";
+  import SteamInput from "./steamInput.svelte";
 </script>
 
-<h1>DESAFIO ALEATORIO NOS SEUS JOGOS DA STEAM</h1>
-<p>
-  Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation
-</p>
+<div class="main">
+  <h1>Entendiado? Gere um desafio!</h1>
+  <SteamInput />
+  <GeneratedChallanges />
+</div>
 
-{#if $loading}
-  <p>Loading...</p>
-{:else if $error}
-  <p>Error: {$error.message}</p>
-{:else}
-  <h1>Steam Random Challenge</h1>
-  <div class="input-container">
-    <input type="text" bind:value={steamId} placeholder="Enter a steam id" />
-    <button on:click={() => fetchChallenge(steamId)}>Get Challenge</button>
-  </div>
+<style>
+  :root {
+    margin: 0;
+  }
 
-  {#each $games as game}
-    <p>{game.name}</p>
-  {/each}
-{/if}
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+</style>
