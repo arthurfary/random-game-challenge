@@ -8,7 +8,7 @@
   }
 </script>
 
-<div class="steamInput">
+<div class="input-container">
   {#if $loading}
     <p>Loading...</p>
   {:else if $error}
@@ -23,46 +23,32 @@
 </div>
 
 <style>
-  .steamInput {
-    display: flex;
-    background-color: #1b2838;
-    color: #c7d5e0;
-    border-radius: 25px;
-    align-items: center;
-    flex-direction: column;
-    padding: min(100px, 3%);
-    max-width: 50%;
-    gap: 1em;
-  }
-
   .input-container {
-    flex-direction: column;
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    gap: 1em;
-  }
-
-  input {
-    padding: 10px;
-    border-radius: 25px;
-    border: 1px solid #ddd;
-    text-align: center;
-  }
-
-  button {
     background-color: #2a475e;
-    font-size: 1em;
-    border-radius: 99px;
-    border: 1px solid #c7d5e0;
-    color: #c7d5e0;
-
-    padding-block: 2%;
-    padding-inline: 5%;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
   }
 
-  button:hover {
+  .input-container input {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+
+  .input-container button {
+    background-color: #669900;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
     cursor: pointer;
+  }
+
+  .input-container button:hover {
+    background-color: #4d7a00;
   }
 </style>

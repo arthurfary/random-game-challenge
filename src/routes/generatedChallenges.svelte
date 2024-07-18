@@ -3,7 +3,7 @@
   import { randomGame } from "../stores/steamStore";
 </script>
 
-<div class="main">
+<div class="challenges-container">
   {#if $randomGame !== ""}
     <h1>
       Your random game is {$randomGame}!
@@ -11,28 +11,36 @@
   {/if}
 
   {#if $isLoading}
-    Generating challenges...
+    <p>Generating challenges...</p>
   {:else if $challenges.length > 0}
     {#each $challenges as challenge}
-      <div class="challengeContainer">
-        <h2>{challenge.challengeName}</h2>
+      <div class="challenge">
+        <h3>{challenge.challengeName}</h3>
         <p>{challenge.challengeBody}</p>
         <p><i>Difficulty: {challenge.challengeDifficulty}</i></p>
       </div>
     {/each}
+  {:else}
+    <p>Waiting for input.</p>
   {/if}
 </div>
 
 <style>
-  .main {
-    max-width: 50%;
-    color: #c7d5e0;
+  .challenges-container {
+    background-color: #2a475e;
+    padding: 20px;
+    border-radius: 8px;
   }
 
-  h1 {
+  .challenge {
+    background-color: #1b2838;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  .challenge h3 {
     color: #66c0f4;
-    margin-bottom: 4vh;
-    font-size: 4em;
-    text-align: center;
+    margin: 0;
   }
 </style>
