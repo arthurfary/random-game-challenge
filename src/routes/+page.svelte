@@ -1,35 +1,46 @@
+
 <script>
-  import GeneratedChallanges from "./generatedChallanges.svelte";
-  import SteamInput from "./steamInput.svelte";
+  import SteamInput from './steamInput.svelte';
+  import GeneratedChallenges from './generatedChallenges.svelte';
 </script>
 
-<div class="main">
-  <h1>Entendiado? Gere um desafio!</h1>
-  <SteamInput />
-  <GeneratedChallanges />
+<div class="container">
+  <header>
+    <h1>Steam Challenge Generator</h1>
+  </header>
+  <div class="content">
+    <SteamInput />
+    <GeneratedChallenges />
+  </div>
 </div>
 
 <style>
-  :global(*) {
+  :global(body) {
     margin: 0;
     padding: 0;
-  }
-
-  h1 {
-    color: #66c0f4;
-    margin-bottom: 4vh;
-    font-size: 4em;
-  }
-
-  .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #171a21;
+    color: #c7d5e0;
+  }
 
-    min-height: 100vh;
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  header {
+    background-color: #1b2838;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #66c0f4;
+  }
+
+  header h1 {
+    color: #66c0f4;
+  }
+
+  .content {
+    margin-top: 20px;
   }
 </style>
