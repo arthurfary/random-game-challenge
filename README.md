@@ -1,38 +1,13 @@
-# create-svelte
+# Up for a challenge? 🎮
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+This is the repo for my challenge generating website, simply head to https://random-game-challenge.vercel.app/ input your steam id and try ro beat some AI generated challenges!
 
-## Creating a project
+## How does this work?
 
-If you're seeing this, you've probably already done this step. Congrats!
+Basically it uses the public Steam api to fetch games played by the user, it also sorts them by hours played so you don't get any of those _really weird_ games.
+After that, it makes a api call to the Gemini generative ai and prompts it to create some challenges!
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+### Have fun!
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+> This website is made using svelte and some typescript.
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
