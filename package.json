@@ -22,6 +22,7 @@
 	"type": "module",
 	"dependencies": {
 		"@google/generative-ai": "^0.15.0",
-		"axios": "^1.7.2"
+		"axios": "^1.7.2",
+		"svelte-markdown": "^0.4.1"
 	}
 }
