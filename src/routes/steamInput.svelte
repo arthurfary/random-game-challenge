@@ -1,9 +1,9 @@
-<script>
-  import { loading, error, fetchUserGames } from "../stores/steamStore.js";
+<script lang="ts">
+  import { loading, error, fetchUserGames } from "../stores/steamStore";
 
   let steamId = "";
 
-  function fetchChallenge(steamId) {
+  function fetchChallenge(steamId: string) {
     fetchUserGames(steamId);
   }
 </script>

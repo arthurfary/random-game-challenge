@@ -1,9 +1,10 @@
-import { writable, get } from "svelte/store";
+import { writable } from "svelte/store";
 import { generateGameChallanges } from "./geminiStore";
+import type { SteamGame } from "../types";
 
-export const games = writable([]);
+export const games = writable<SteamGame[]>([]);
 export const loading = writable(false);
-export const error = writable(null);
+export const error = writable<Error | undefined>(undefined);
 export const randomGame = writable("");
 
 randomGame.subscribe((value) => {
@@ -12,9 +13,9 @@ randomGame.subscribe((value) => {
   }
 });
 
-export async function fetchUserGames(steamID) {
+export async function fetchUserGames(steamID: string) {
   loading.set(true);
-  error.set(null);
+  error.set(undefined);
 
   try {
     const response = await fetch(`/api/steam?steamid=${steamID}`);
@@ -23,18 +24,18 @@ export async function fetchUserGames(steamID) {
     }
     const data = await response.json();
 
-    data.sort((a, b) => b.playtime_forever - a.playtime_forever);
+    data.sort((a: SteamGame, b: SteamGame) => b.playtime_forever - a.playtime_forever);
 
     games.set(data.slice(0, 30));
     pickRandomGame(data.slice(0, 30));
   } catch (err) {
-    error.set(err);
+    error.set(err as Error);
   } finally {
     loading.set(false);
   }
 }
 
-function pickRandomGame(slicedGames) {
+function pickRandomGame(slicedGames: SteamGame[]) {
   if (slicedGames.length > 0) {
     const randomIndex = Math.floor(Math.random() * slicedGames.length);
     randomGame.set(slicedGames[randomIndex].name);
