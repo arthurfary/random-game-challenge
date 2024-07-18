@@ -1,11 +1,12 @@
 import { writable } from "svelte/store";
 
 import { GoogleGenerativeAI } from "@google/generative-ai"
+import type { Challenge } from "../types";
 
-export const challenges = writable("")
+export const challenges = writable<Challenge[]>([])
 export const isLoading = writable(false)
 
-export async function generateGameChallanges(gameName) {
+export async function generateGameChallanges(gameName: string) {
   isLoading.set(true)
 
   const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
@@ -29,14 +30,14 @@ export async function generateGameChallanges(gameName) {
     list[challenge]
 
     Example challenges for reference:
-    1. {"challengeName": "Beginner's Luck", "challengeBody": "Complete the first mission without taking any damage.", "challengeDifficulty": 0}
-    2. {"challengeName": "Resourceful Warrior", "challengeBody": "Defeat 10 enemies using only melee weapons.", "challengeDifficulty": 1}
-    3. {"challengeName": "Ultimate Survivor", "challengeBody": "Survive for 20 minutes in the hardest difficulty mode.", "challengeDifficulty": 2}
+    1. {"challengeName": "Beginner's Luck", "challengeBody": 'Complete the first mission without taking any damage.', "challengeDifficulty": 0}
+    2. {"challengeName": "Resourceful Warrior", "challengeBody": 'Defeat 10 enemies using only melee weapons.', "challengeDifficulty": 1}
+    3. {"challengeName": "Ultimate Survivor", "challengeBody": 'Survive for 20 minutes in the hardest difficulty mode.', "challengeDifficulty": 2}
     `;
 
   const result = await model.generateContent(prompt)
   const response = await result.response;
 
-  challenges.set(response.text())
+  challenges.set(JSON.parse(response.text()));
   isLoading.set(false)
 }

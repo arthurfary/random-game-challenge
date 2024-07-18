@@ -1,7 +1,6 @@
-<script>
+<script lang="ts">
   import { challenges, isLoading } from "../stores/geminiStore";
   import { randomGame } from "../stores/steamStore";
-  import SvelteMarkdown from "svelte-markdown";
 </script>
 
 <div class="main">
@@ -13,8 +12,14 @@
 
   {#if $isLoading}
     Generating challenges...
-  {:else if $challenges !== ""}
-    <SvelteMarkdown source={$challenges} />
+  {:else if $challenges.length > 0}
+    {#each $challenges as challenge}
+      <div class="challengeContainer">
+        <h2>{challenge.challengeName}</h2>
+        <p>{challenge.challengeBody}</p>
+        <p><i>Difficulty: {challenge.challengeDifficulty}</i></p>
+      </div>
+    {/each}
   {/if}
 </div>
 
