@@ -1,7 +1,6 @@
-
 <script>
-  import SteamInput from './steamInput.svelte';
-  import GeneratedChallenges from './generatedChallenges.svelte';
+  import SteamInput from "./steamInput.svelte";
+  import GeneratedChallenges from "./generatedChallenges.svelte";
 </script>
 
 <div class="container">
@@ -18,7 +17,7 @@
   :global(body) {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: "Arial", sans-serif;
     background-color: #171a21;
     color: #c7d5e0;
   }
