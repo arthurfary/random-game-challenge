@@ -16,62 +16,55 @@
     {#each $challenges as challenge}
       <div class="challenge">
         <div class="title">
+          {#if challenge.challengeDifficulty === 0}
+            <span class="easy ball"></span>
+          {:else if challenge.challengeDifficulty === 1}
+            <span class="medium ball"></span>
+          {:else}
+            <span class="hard ball"></span>
+          {/if}
+
           <h3>{challenge.challengeName}</h3>
-          <div class="difficulty">
-            {#if challenge.challengeDifficulty === 0}
-              <p class="easy">Easy</p>
-            {:else if challenge.challengeDifficulty === 1}
-              <p class="medium">Medium</p>
-            {:else}
-              <p class="hard">Hard</p>
-            {/if}
-          </div>
         </div>
 
-        <p>{challenge.challengeBody}</p>
+        <p data-body>{challenge.challengeBody}</p>
       </div>
     {/each}
-  {:else}
-    <p>Waiting for input.</p>
   {/if}
 </div>
 
 <style>
-  .challenges-container {
-    background-color: #2a475e;
-    padding: 20px;
-    border-radius: 8px;
+  .challenges-container h1 {
+    padding: 10px;
   }
-
   .challenge {
-    background-color: #1b2838;
     padding: 10px;
     border-radius: 4px;
     margin-bottom: 10px;
   }
 
   .challenge h3 {
-    color: #66c0f4;
+    color: #c7d5e0;
     margin: 0;
     align-self: center;
   }
 
+  .challenge [data-body] {
+    color: #c7d5e088;
+  }
+
   .title {
     display: flex;
+    align-items: center;
   }
 
-  .difficulty p {
-    margin: 0;
-    margin-left: 10px;
-    padding-block: 2px;
-    padding-inline: 10px;
-    width: fit-content;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: bold;
-    color: white;
+  .ball {
+    margin-right: 1em;
+    border-radius: 999px;
+    height: 10px;
+    aspect-ratio: 1;
+    display: inline-block;
   }
-
   .easy {
     background: #669900;
   }
