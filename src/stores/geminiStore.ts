@@ -38,6 +38,8 @@ export async function generateGameChallanges(gameName: string) {
   const result = await model.generateContent(prompt)
   const response = await result.response;
 
-  challenges.set(JSON.parse(response.text()));
+  const unsortedChallenges = <Challenge[]>JSON.parse(response.text());
+
+  challenges.set(unsortedChallenges.sort((a: Challenge, b: Challenge) => a.challengeDifficulty - b.challengeDifficulty));
   isLoading.set(false)
 }

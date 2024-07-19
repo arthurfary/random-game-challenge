@@ -15,9 +15,20 @@
   {:else if $challenges.length > 0}
     {#each $challenges as challenge}
       <div class="challenge">
-        <h3>{challenge.challengeName}</h3>
+        <div class="title">
+          <h3>{challenge.challengeName}</h3>
+          <div class="difficulty">
+            {#if challenge.challengeDifficulty === 0}
+              <p class="easy">Easy</p>
+            {:else if challenge.challengeDifficulty === 1}
+              <p class="medium">Medium</p>
+            {:else}
+              <p class="hard">Hard</p>
+            {/if}
+          </div>
+        </div>
+
         <p>{challenge.challengeBody}</p>
-        <p><i>Difficulty: {challenge.challengeDifficulty}</i></p>
       </div>
     {/each}
   {:else}
@@ -42,5 +53,34 @@
   .challenge h3 {
     color: #66c0f4;
     margin: 0;
+    align-self: center;
+  }
+
+  .title {
+    display: flex;
+  }
+
+  .difficulty p {
+    margin: 0;
+    margin-left: 10px;
+    padding-block: 2px;
+    padding-inline: 10px;
+    width: fit-content;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+  }
+
+  .easy {
+    background: #669900;
+  }
+
+  .medium {
+    background: #e6b11e;
+  }
+
+  .hard {
+    background: #d94126;
   }
 </style>
