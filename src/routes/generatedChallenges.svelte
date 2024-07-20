@@ -25,6 +25,9 @@
           {/if}
 
           <h3>{challenge.challengeName}</h3>
+          <div class="checkbox">
+            <input type="checkbox" />
+          </div>
         </div>
 
         <p data-body>{challenge.challengeBody}</p>
@@ -75,5 +78,39 @@
 
   .hard {
     background: #d94126;
+  }
+
+  .checkbox {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+  }
+  .checkbox input {
+    margin-left: 1em;
+    width: 3em;
+    aspect-ratio: 1;
+    border-radius: 5px;
+    background: transparent;
+    border: 1px solid #c7d5e088;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+  }
+
+  .checkbox input:checked {
+    background-color: transparent;
+  }
+
+  .checkbox input:checked::before {
+    content: "✓";
+    color: #1981e6;
+    font-size: 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -60%);
   }
 </style>

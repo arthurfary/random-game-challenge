@@ -43,7 +43,7 @@
   }
 
   .container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     margin-block: 10vh;
   }
