@@ -13,9 +13,11 @@ randomGame.subscribe((value) => {
   }
 });
 
-export async function fetchUserGames(steamID: string) {
+export async function fetchUserGames(steamUrl: string) {
   loading.set(true);
   error.set(undefined);
+
+  const steamID = await parseSteamUrl(steamUrl);
 
   try {
     const response = await fetch(`/api/steam?steamid=${steamID}`);
@@ -41,3 +43,19 @@ function pickRandomGame(slicedGames: SteamGame[]) {
     randomGame.set(slicedGames[randomIndex].name);
   }
 }
+
+async function parseSteamUrl(steamUrl: string) {
+  const trimmedSteamUrl = steamUrl.replace(/\/$/, '')
+  const identification = trimmedSteamUrl.split('/').pop()
+
+  // if its not a number
+  if (isNaN(+identification)) {
+    const response = await fetch(`/api/steam/vanitytoid?vanityurl=${identification}`)
+    const data = await response.json()
+    return data.steamid
+  }
+  else {
+    return +identification
+  }
+}
+
